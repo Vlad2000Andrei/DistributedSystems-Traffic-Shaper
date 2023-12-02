@@ -113,7 +113,7 @@ echo "Final drop is: $DropChanceArg"
 $ArgList = "$BandwidthArg $DelayArg $DropChanceArg"
 echo "Final arg list is: $ArgList"
 
-# try {
+try {
     try {
         $ClumsyPathFull = [System.IO.Path]::GetFullPath($ClumsyPath)
     }
@@ -123,8 +123,8 @@ echo "Final arg list is: $ArgList"
     
     echo "Clumsy is at: $ClumsyPathFull"
     Start-Process -FilePath $ClumsyPathFull -Verb RunAs -ArgumentList $ArgList
-# }
-# catch {
-#     echo ">>> [Error] Error occurred during clumsy startup. Closing."
-#     .\stop-clumsy.ps1
-# }
+}
+catch {
+    echo ">>> [Error] Error occurred during clumsy startup. Closing."
+    .\stop-clumsy.ps1
+}
