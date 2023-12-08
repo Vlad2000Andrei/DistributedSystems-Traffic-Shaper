@@ -22,7 +22,7 @@ param (
 )
 
 # Sanity check that command would have AN effect on SOMETHING at least.
-if (!$AffectDownload -and !$AffectUpload) {
+if ((!$AffectDownload -and !$AffectUpload) -and ($Delay -or $DropChance)) {
     echo ">>> [Error] Both AffectUpload and AffectDownload are False. Command would have no effect. Exiting."
     exit
 }
