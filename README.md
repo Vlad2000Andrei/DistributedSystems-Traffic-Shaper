@@ -27,6 +27,7 @@
     - [Setting a Drop Chance](#setting-a-drop-chance)
         - [Example: Dropping 25% of Outgoing Packets](#example-dropping-25-of-outgoing-packets)
         - [Example: Dropping 5% of All Packets](#example-dropping-5-of-all-packets)
+    - [Stopping Clumsy](#stopping-clumsy)
 
 # Using PowerShell Scripts for Quality of Service (QoS) Policies
 
