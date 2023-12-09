@@ -206,3 +206,11 @@ Clumsy supports randomly dropping packets with a given `DropChance`. This can be
 ```ps1
 ./start-clumsy.ps1 -ClumsyPath "C:\Program Files\Clumsy\" -DropChance 0.05 -AffectUpload $true -AffectDownload $true
 ```
+
+## Stopping Clumsy
+
+You can stop a running clumsy process using the `stop-clumsy.ps1` script:
+```ps1
+./stop-clumsy.ps1
+```
+> Note: If clumsy is not running, this script is a No-Op, nothing will happen.
