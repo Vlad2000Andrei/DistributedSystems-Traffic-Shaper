@@ -24,7 +24,6 @@ if ((!$AffectDownload -and !$AffectUpload) -and ($Delay -or $DropChance)) {
     exit
 }
 
-$FilterArg = '--filter \"outbound or inbound\"'
 if ($AffectDownload -and $AffectUpload) {
     $FilterArg = "--filter outbound or inbound"
 }
