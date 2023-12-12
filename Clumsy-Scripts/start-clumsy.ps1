@@ -110,7 +110,8 @@ if ($DropChance -and ($AffectDownload -or $AffectUpload)) {
 } 
 echo "Final drop is: $DropChanceArg"
 
-$ArgList = "$BandwidthArg $DelayArg $DropChanceArg"
+$Filter = "--filter outbound"
+$ArgList = "$BandwidthArg $DelayArg $DropChanceArg $Filter"
 echo "Final arg list is: $ArgList"
 
 try {
