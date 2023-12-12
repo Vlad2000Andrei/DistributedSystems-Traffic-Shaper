@@ -6,9 +6,6 @@ param (
     [int]$Delay,    # How long to delay packets by (measured in milisec)
 
     [Parameter()]
-    [float]$DelayChance, # Probability of packet being delayed (0 - 1)
-
-    [Parameter()]
     [int]$BandwidthKBps, # Bandwidth cap for BOTH upload AND download (0 - 99999 KiloBYTES per second)
 
     [Parameter()]
@@ -41,7 +38,7 @@ elseif ($AffectUpload) {
 # Set delay argument
 $DelayArg = "--lag off --lag-outbound off --lag-inbound off"
 if ($Delay -and ($AffectDownload -or $AffectUpload)) {
-    $DelayArg = "--lag on --lag $Delay"
+    $DelayArg = "--lag on --lag-time $Delay"
 
     if ($AffectUpload) {
         $DelayArg = "$DelayArg --lag-outbound on"
@@ -55,19 +52,6 @@ if ($Delay -and ($AffectDownload -or $AffectUpload)) {
     }
     else {
         $DelayArg = "$DelayArg --lag-inbound off"
-    }
-
-    if (!$DelayChance) {
-        echo ">>> [Error] DelayChance argument is mandatory if Delay is enabled. Please enter a probability from 0 to 1."
-        exit
-    }
-    elseif (($DelayChance -lt 0) -or ($DelayChance -gt 1)) {
-        echo ">>> [Error] Invalid value for DelayChance. Must be between 0 and 1."
-        exit
-    }
-    else {
-        $DelayChanceAdjusted = [math]::Round($DelayChance * 100, 2)
-        $DelayArg = "$DelayArg --lag-chance $DelayChanceAdjusted"
     }
 }
 echo "Final delay is: $DelayArg"

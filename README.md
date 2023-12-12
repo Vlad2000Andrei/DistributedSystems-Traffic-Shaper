@@ -22,8 +22,8 @@
     - [Setting Bandwidth Limit](#setting-a-bandwidth-limit)
         - [Example: 1MB/s Limit](#example-limiting-bandwidth-to-1mbs)
     - [Setting a Delay](#setting-a-delay)
-        - [Example: Delay Inbound and Outbound by 5ms with 50% chance](#example-delaying-incoming-and-outgoing-packets-by-5ms-with-a-50-chance)
-        - [Exmaple: Delay All Outgoing Packets by 30ms](#example-delaying-all-outgoing-packets-by-30ms)
+        - [Example: Delay Inbound and Outbound by 5ms](#example-delaying-incoming-and-outgoing-packets-by-5ms)
+        - [Exmaple: Delay Outgoing Packets by 30ms](#example-delaying-outgoing-packets-by-30ms)
     - [Setting a Drop Chance](#setting-a-drop-chance)
         - [Example: Dropping 25% of Outgoing Packets](#example-dropping-25-of-outgoing-packets)
         - [Example: Dropping 5% of All Packets](#example-dropping-5-of-all-packets)
@@ -164,26 +164,24 @@ A bandiwdth cap can be specified in KB/s:
 
 ## Setting a Delay
 
-Clumsy supports delaying packets with a random `DelayChance` and a set time `Delay` in milliseconds. These are both specified as arguments:
+Clumsy supports delaying packets with a set time `Delay` in milliseconds. This is specified as an argument:
 
 ```ps1
-./start-clumsy.ps1 -ClumsyPath "<path to clumsy_folder>" -Delay <Delay> -DelayChance <DelayChance>
+./start-clumsy.ps1 -ClumsyPath "<path to clumsy_folder>" -Delay <Delay>
 ```
 
 > Note: The `Delay` argument must be an integer number of *miliseconds*.
 
-> Note: The `DelayChance` argument must be a floating point number between 0 and 1. The powershell script will convert it into a number between 0 and 100 for clumsy. Up to 4 decimal positions are supported in your input, further ones will be rounded away.
-
-### Example: Delaying Incoming and Outgoing Packets by 5ms with a 50% chance.
+### Example: Delaying Incoming and Outgoing Packets by 5ms.
 
 ```ps1
-./start-clumsy.ps1 -ClumsyPath "C:\Program Files\Clumsy\" -Delay 5 -DelayChance 0.5 -AffectUpload $true -AffectDownload $true
+./start-clumsy.ps1 -ClumsyPath "C:\Program Files\Clumsy\" -Delay 5 -AffectUpload $true -AffectDownload $true
 ```
 
-### Example: Delaying ALL Outgoing Packets by 30ms.
+### Example: Delaying Outgoing Packets by 30ms.
 
 ```ps1
-./start-clumsy.ps1 -ClumsyPath "C:\Program Files\Clumsy\" -Delay 30 -DelayChance 1.0 -AffectUpload $true
+./start-clumsy.ps1 -ClumsyPath "C:\Program Files\Clumsy\" -Delay 30 -AffectUpload $true
 ```
 
 ## Setting a Drop Chance
