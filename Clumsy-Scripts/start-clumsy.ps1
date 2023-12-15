@@ -25,13 +25,13 @@ if ((!$AffectDownload -and !$AffectUpload) -and ($Delay -or $DropChance)) {
 }
 
 if ($AffectDownload -and $AffectUpload) {
-    $FilterArg = "--filter outbound or inbound"
+    $FilterArg = '--filter "outbound or inbound"'
 }
 elseif ($AffectDownload) {
-    $FilterArg = "--filter inbound"
+    $FilterArg = '--filter "inbound"'
 }
 elseif ($AffectUpload) {
-    $FilterArg = "--filter outbound"
+    $FilterArg = '--filter "outbound"'
 }
 
 # Set delay argument
@@ -93,8 +93,7 @@ if ($DropChance -and ($AffectDownload -or $AffectUpload)) {
 } 
 echo "Final drop is: $DropChanceArg"
 
-$Filter = "--filter outbound"
-$ArgList = "$BandwidthArg $DelayArg $DropChanceArg $Filter"
+$ArgList = "$BandwidthArg $DelayArg $DropChanceArg $FilterArg"
 echo "Final arg list is: $ArgList"
 
 try {
